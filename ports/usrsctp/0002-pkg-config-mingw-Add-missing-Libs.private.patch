@@ -1,0 +1,35 @@
+From 57e32e06bedbcc5c3214b2ad078d77f18b2d8a7e Mon Sep 17 00:00:00 2001
+From: Mikhail Svetkin <mikhail.svetkin@remarkable.no>
+Date: Tue, 14 Jun 2022 00:07:17 +0200
+Subject: [PATCH] pkg-config/mingw: Add missing Libs.private
+
+---
+ usrsctp.pc.in             | 1 +
+ usrsctplib/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/usrsctp.pc.in b/usrsctp.pc.in
+index a1ecd2f..a827c51 100644
+--- a/usrsctp.pc.in
++++ b/usrsctp.pc.in
+@@ -9,4 +9,5 @@ URL: https://github.com/sctplab/usrsctp
+ Version: @VERSION@
+ Requires: 
+ Libs: -L${libdir} -lusrsctp
++Libs.private: @pc_libs_private@
+ Cflags: -I${includedir} @APPCFLAGS@
+diff --git a/usrsctplib/CMakeLists.txt b/usrsctplib/CMakeLists.txt
+index aa99cf2..bebf452 100644
+--- a/usrsctplib/CMakeLists.txt
++++ b/usrsctplib/CMakeLists.txt
+@@ -179,6 +179,7 @@ target_include_directories(usrsctp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+ if (WIN32)
+ 	message(STATUS "link library: ws2_32")
+ 	target_link_libraries(usrsctp ws2_32 iphlpapi)
++	set(pc_libs_private "-lws2_32 -liphlpapi")
+ endif ()
+ 
+ set_target_properties(usrsctp PROPERTIES IMPORT_SUFFIX "_import.lib")
+-- 
+2.36.1
+

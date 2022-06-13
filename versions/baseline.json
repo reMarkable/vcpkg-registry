@@ -1,5 +1,6 @@
 {
   "default": {
-    "gtest": { "baseline": "1.11.0", "port-version": 6 }
+    "gtest": { "baseline": "1.11.0", "port-version": 6 },
+    "usrsctp": { "baseline": "0.9.5.0", "port-version": 2 }
   }
 }

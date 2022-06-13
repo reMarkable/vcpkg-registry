@@ -1,0 +1,25 @@
+From a64f15b8758d1b090057b871bf0f7c302d655140 Mon Sep 17 00:00:00 2001
+From: Mikhail Svetkin <mikhail.svetkin@remarkable.no>
+Date: Mon, 13 Jun 2022 22:17:24 +0200
+Subject: [PATCH] mingw: include stdint instead of define types
+
+---
+ usrsctplib/usrsctp.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usrsctplib/usrsctp.h b/usrsctplib/usrsctp.h
+index b719290..7cf5cce 100644
+--- a/usrsctplib/usrsctp.h
++++ b/usrsctplib/usrsctp.h
+@@ -59,7 +59,7 @@ extern "C" {
+ #endif
+ 
+ #ifdef _WIN32
+-#if defined(_MSC_VER) && _MSC_VER >= 1600
++#if (defined(_MSC_VER) && _MSC_VER >= 1600) || defined(__GNUC__)
+ #include <stdint.h>
+ #elif defined(SCTP_STDINT_INCLUDE)
+ #include SCTP_STDINT_INCLUDE
+-- 
+2.36.1
+
