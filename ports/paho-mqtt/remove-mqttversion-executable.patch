@@ -1,0 +1,44 @@
+From c00ea2b6ec1583d493809a743a8827b6de68f80c Mon Sep 17 00:00:00 2001
+From: Mikhail Svetkin <mikhail.svetkin@remarkable.no>
+Date: Thu, 23 Jun 2022 13:23:40 +0200
+Subject: [PATCH] Remove MQTTVersion executable
+
+---
+ src/CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index db4a0ac..c3da5f9 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -83,10 +83,6 @@ ADD_LIBRARY(common_obj OBJECT ${common_src})
+ SET_TARGET_PROPERTIES(common_obj PROPERTIES
+     POSITION_INDEPENDENT_CODE ON
+     COMPILE_DEFINITIONS "PAHO_MQTT_EXPORTS=1")
+-ADD_EXECUTABLE(MQTTVersion MQTTVersion.c)
+-SET_TARGET_PROPERTIES(MQTTVersion PROPERTIES
+-    POSITION_INDEPENDENT_CODE ON
+-    COMPILE_DEFINITIONS "PAHO_MQTT_IMPORTS=1")
+ ENDIF()
+ 
+ IF (PAHO_BUILD_STATIC)    
+@@ -102,7 +98,6 @@ IF (PAHO_BUILD_SHARED)
+     
+     TARGET_LINK_LIBRARIES(paho-mqtt3c ${LIBS_SYSTEM})
+     TARGET_LINK_LIBRARIES(paho-mqtt3a ${LIBS_SYSTEM})
+-    TARGET_LINK_LIBRARIES(MQTTVersion paho-mqtt3a paho-mqtt3c ${LIBS_SYSTEM})
+     
+     SET_TARGET_PROPERTIES(
+         paho-mqtt3c paho-mqtt3a PROPERTIES
+@@ -141,8 +136,6 @@ IF (PAHO_BUILD_SHARED)
+ 		ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ 		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ 		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+-    INSTALL(TARGETS MQTTVersion
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+ IF (PAHO_BUILD_STATIC)
+-- 
+2.36.1
+
