@@ -1,0 +1,27 @@
+From c25f68ff612f303dc72d4e65ae3561a65ac3c768 Mon Sep 17 00:00:00 2001
+From: Mikhail Svetkin <mikhail.svetkin@remarkable.no>
+Date: Tue, 14 Jun 2022 10:07:37 +0200
+Subject: [PATCH] cmake: Add missing link dependency bcrypt
+
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b91b6a..1c9ea3e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -357,6 +357,10 @@ else()
+ 		target_compile_definitions(datachannel-static PRIVATE RTC_SYSTEM_JUICE=1)
+ 		target_link_libraries(datachannel PRIVATE LibJuice::LibJuice)
+ 		target_link_libraries(datachannel-static PRIVATE LibJuice::LibJuice)
++    if (WIN32)
++      target_link_libraries(datachannel PUBLIC bcrypt)
++      target_link_libraries(datachannel-static PUBLIC bcrypt)
++    endif()
+ 	else()
+ 		add_subdirectory(deps/libjuice EXCLUDE_FROM_ALL)
+ 		target_compile_definitions(datachannel PRIVATE RTC_SYSTEM_JUICE=0)
+-- 
+2.36.1
+
