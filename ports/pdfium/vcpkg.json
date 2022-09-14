@@ -1,0 +1,12 @@
+{
+  "name": "pdfium",
+  "version": "107.0.5296.0",
+  "port-version": 1,
+  "description": "An open-source library for PDF manipulation and rendering.",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

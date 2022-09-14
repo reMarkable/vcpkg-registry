@@ -1,0 +1,9 @@
+{
+  "versions": [
+    {
+      "path": "$/ports/pdfium",
+      "version-string": "107.0.5296.0",
+      "port-version": 1
+    }
+  ]
+}
