@@ -1,0 +1,9 @@
+{
+  "versions": [
+    {
+      "path": "$/ports/sparkle",
+      "version-semver": "1.25.0",
+      "port-version": 1
+    }
+  ]
+}

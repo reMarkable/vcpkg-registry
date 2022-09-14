@@ -1,0 +1,8 @@
+{
+    "name": "sparkle",
+    "version": "1.25.0",
+    "port-version": 1,
+    "description": "Sparkle is an easy-to-use software update library for developers.",
+    "homepage": "https://sparkle-project.org/",
+    "supports": "osx"
+  }
